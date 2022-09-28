@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Graph<Label>  {
@@ -64,6 +65,13 @@ public class Graph<Label>  {
                 graphRev.addArc(edge.destination, source, "");
             }
         }
-        return graphRev;
+        return graphRev.sort();
+    }
+
+    public Graph<Label> sort() {
+        for(LinkedList<Edge> ll : incidency) {
+            ll.sort(Comparator.comparingInt((Edge o) -> o.destination));
+        }
+        return this;
     }
 }

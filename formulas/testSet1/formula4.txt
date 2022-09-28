@@ -1,4 +1,4 @@
-c Formula randomly generated -- Satisfiable  //unsatisfiable
+c Formula randomly generated -- Satisfiable
 p cnf 10 20
 -3 4 0
 -3 7 0

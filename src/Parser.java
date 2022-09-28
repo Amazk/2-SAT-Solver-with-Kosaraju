@@ -18,13 +18,13 @@ public class Parser {
                 String dst = line.substring(line.indexOf(" ")+1);
                 int source = Integer.parseInt(src.trim());  // trim() permet de retirer les espaces
                 int dest = Integer.parseInt(dst.trim());
-                graph.addArc(-source,dest,"-s => d");
-                graph.addArc(-dest,source,"-d => s");
+                graph.addArc(-source,dest,"-s => d / s:"+source+",d:"+dest);
+                graph.addArc(-dest,source,"-d => s / s:"+source+",d:"+dest);
             }
             scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return graph;
+        return graph.sort();
     }
 }

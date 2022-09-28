@@ -1,5 +1,4 @@
 import java.util.List;
-
 import static java.lang.System.exit;
 
 public class Main {

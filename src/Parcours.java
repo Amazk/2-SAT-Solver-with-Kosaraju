@@ -2,21 +2,20 @@ import java.util.*;
 
 public class Parcours {
 
-    private int nbEqClass =0;
+    private int nbEqClass=0;
     private final List<Integer> parcouru = new ArrayList<>();
     private final List<Integer> order = new ArrayList<>();
     private final List<List<Integer>> composantes = new ArrayList<>();
 
     public void profondeurItereG(Graph<String> graph) {
-        for(int source=0;source< graph.order();source++) {
-            if(!parcouru.isEmpty()) createOrder();
+        for(int source=0;source<graph.order();source++) {
             if(parcouru.contains(source)) continue;
             parcouru.add(source);
             for(int indexDest=0; indexDest<graph.getArcNumber(source); indexDest++) {
                 explore(graph,graph.getDest(source,indexDest));
             }
+            order.add(source);
         }
-        createOrder();
         parcouru.clear();
     }
 
@@ -38,13 +37,7 @@ public class Parcours {
         for(int otherDest=0; otherDest<graph.getArcNumber(dest); otherDest++) {
             explore(graph, graph.getDest(dest,otherDest));
         }
-    }
-
-    private void createOrder() {
-        for(int i=parcouru.size()-1;i>=0;i--) {
-            if(order.contains(parcouru.get(i)) || parcouru.get(i)==-1) continue;
-            order.add(parcouru.get(i));
-        }
+        order.add(dest);
     }
 
     public List<List<Integer>> getComposantes() {
